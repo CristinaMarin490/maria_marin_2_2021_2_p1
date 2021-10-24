@@ -118,17 +118,15 @@ class _ElephantScreenState extends State<ElephantScreen> {
              child:Row(
                mainAxisAlignment:  MainAxisAlignment.spaceBetween,
                children: [
-                 Expanded(
-                   child: ClipRRect(
-                     borderRadius: BorderRadius.circular(50),
-                      child: FadeInImage(
-                       placeholder: AssetImage(e.image),
-                        image: NetworkImage(e.image),
-                        width: 100,
-                        height:100,
-                        fit: BoxFit.cover,
-                        ),
-                   ),
+                 ClipRRect(
+                   borderRadius: BorderRadius.circular(50),
+                    child: FadeInImage(
+                     placeholder: AssetImage(e.image),
+                      image: NetworkImage(e.image),
+                      width: 100,
+                      height:100,
+                      fit: BoxFit.cover,
+                      ),
                  ),
                  Column(
                    children:[ 

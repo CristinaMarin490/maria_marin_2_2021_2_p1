@@ -1,5 +1,6 @@
 import 'package:elephants_app/screens/elephant_screen.dart';
 import 'package:flutter/material.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({ Key? key }) : super(key: key);
 
@@ -23,20 +24,14 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(150),
-              child: FadeInImage(
-              placeholder: AssetImage('assets/Elephant.png'),
-              image: NetworkImage('assets/Elephant.png'),
-              height: 300,
-              fit: BoxFit.cover
-            ),
-          ),
+             // _showLogo(),
+             // SizedBox(height: 20,),
           
            SizedBox(height: 30,),
           ListTile(
-             leading: Icon(Icons.logout),
-             title: const Text('Optener lista'),
+             leading: Icon(Icons.post_add_outlined),
+             title: const Text('Ver lisado de elefantes')
+             ,
              onTap: () {
                Navigator.push(
                 context, 
@@ -50,7 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 }
-
+  Widget _showLogo() {
+      return Image(
+        image: AssetImage('assets/noimage.png'),
+        width: 150,
+      );
+  }
 
   /*_getBody() {
     return Container(
