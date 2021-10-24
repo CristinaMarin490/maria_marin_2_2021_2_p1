@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:elephants_app/components/loader_component.dart';
 import 'package:elephants_app/helpers/constans.dart';
 import 'package:elephants_app/models/elephant.dart';
+import 'package:elephants_app/screens/elephants_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -110,22 +111,24 @@ class _ElephantScreenState extends State<ElephantScreen> {
      children: _elephants.map((e) {
        return Card(
          child: InkWell(
-           onTap: () {},
+           onTap: ()  => _goView(e),
            child: Container(
-             margin: EdgeInsets.all(10),
-             padding: EdgeInsets.all(5),
+             margin: EdgeInsets.all(1),
+             padding: EdgeInsets.all(1),
              child:Row(
                mainAxisAlignment:  MainAxisAlignment.spaceBetween,
                children: [
-                 ClipRRect(
-                   borderRadius: BorderRadius.circular(50),
-                    child: FadeInImage(
-                     placeholder: AssetImage(e.image),
-                      image: NetworkImage(e.image),
-                      width: 100,
-                      height:100,
-                      fit: BoxFit.cover,
-                      ),
+                 Expanded(
+                   child: ClipRRect(
+                     borderRadius: BorderRadius.circular(50),
+                      child: FadeInImage(
+                       placeholder: AssetImage(e.image),
+                        image: NetworkImage(e.image),
+                        width: 100,
+                        height:100,
+                        fit: BoxFit.cover,
+                        ),
+                   ),
                  ),
                  Column(
                    children:[ 
@@ -214,4 +217,18 @@ class _ElephantScreenState extends State<ElephantScreen> {
 
     Navigator.of(context).pop();
   }
-}
+
+  _goView(elephant e) async {
+
+        String? result = await Navigator.push(
+      context, 
+      MaterialPageRoute(
+        builder: (context) => ElephantsScreen(todo: e,),
+      )
+    );
+    if (result == 'yes') {
+      _getElephants();
+    }
+    
+  } 
+  }

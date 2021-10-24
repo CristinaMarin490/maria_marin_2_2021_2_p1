@@ -1,5 +1,6 @@
 import 'package:elephants_app/models/elephant.dart';
 import 'package:elephants_app/screens/elephant_screen.dart';
+import 'package:elephants_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,7 +12,7 @@ class ElephantApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Elephants',
-      home: ElephantScreen(),
+      home: HomeScreen(),
     );
   }
 }
