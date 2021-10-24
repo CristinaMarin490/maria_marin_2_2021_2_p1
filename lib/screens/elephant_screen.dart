@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:elephants_app/components/loader_component.dart';
 import 'package:elephants_app/helpers/constans.dart';
 import 'package:elephants_app/models/elephant.dart';
@@ -27,7 +29,6 @@ class _ElephantScreenState extends State<ElephantScreen> {
      super.initState();
      _getElephants();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +84,7 @@ class _ElephantScreenState extends State<ElephantScreen> {
 
   }
 
+ 
   Widget _getContent() {
     return _elephants.length == 0
     ? _noContent()
@@ -115,30 +117,34 @@ class _ElephantScreenState extends State<ElephantScreen> {
            child: Container(
              margin: EdgeInsets.all(1),
              padding: EdgeInsets.all(1),
-             child:Row(
-               mainAxisAlignment:  MainAxisAlignment.spaceBetween,
-               children: [
-                 ClipRRect(
-                   borderRadius: BorderRadius.circular(50),
-                    child: FadeInImage(
-                     placeholder: AssetImage(e.image),
-                      image: NetworkImage(e.image),
-                      width: 100,
-                      height:100,
-                      fit: BoxFit.cover,
-                      ),
-                 ),
-                 Column(
-                   children:[ 
-                     Text(
-                     e.name,
-                     style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: Colors.indigo,
+             child:SingleChildScrollView(
+               child: Flexible(
+                 child: Row(
+                   mainAxisAlignment:  MainAxisAlignment.spaceBetween,
+                   children: [
+                     ClipRRect(
+                       borderRadius: BorderRadius.circular(50),
+                        child: FadeInImage(
+                         placeholder: AssetImage(e.image),
+                          image: NetworkImage(e.image),
+                          width: 100,
+                          height:100,
+                          fit: BoxFit.cover,
+                          ),
                      ),
-                   ),
-                   ]
+                     Column(
+                       children:[ 
+                         Text(
+                         e.name,
+                         style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: Colors.indigo,
+                         ),
+                       ),
+                       ]
+                     ),
+                     Icon(Icons.redo_outlined)
+                  ],
                  ),
-                 Icon(Icons.redo_outlined)
-              ],
+               ),
              ),
              ),
          ),

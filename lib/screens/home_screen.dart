@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:elephants_app/screens/elephant_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: _getBody(),
     );
   }
+
   _getBody() {
      return Container(
       margin: EdgeInsets.all(30),
